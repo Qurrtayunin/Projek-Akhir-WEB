@@ -15,7 +15,7 @@ class Mobil extends Migration
     {
         Schema::create('mobil', function (Blueprint $table) {
             $table->bigIncrements('id_mobil');
-            $table->bigInteger('nama_kategori')->unsigned();
+            $table->string('nama_kategori')->index();
             $table->string('nama_mobil');
             $table->integer('tahun_produksi');
             $table->string('no_plat');
