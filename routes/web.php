@@ -15,3 +15,5 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::resource('customer.index', 'CustomerController');
+Auth::routes();
