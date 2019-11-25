@@ -28,7 +28,7 @@
       <div class="sidebar-heading">RENTAL MOBIL </div>
       <br>
       <div class="list-group list-group-flush">
-        <a href="{{route('customer')}}" class="list-group-item list-group-item-action bg-light">Customer</a>
+        <a href="{{route('customer.index')}}" class="list-group-item list-group-item-action bg-light">Customer</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">Booking</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">Kategori</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">Mobil</a>
