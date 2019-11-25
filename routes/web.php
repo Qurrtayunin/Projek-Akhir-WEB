@@ -15,5 +15,10 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::resource('customer.index', 'CustomerController');
+// Route::resource('customer.index', 'CustomerController');
+Route::resource('/customer', 'CustomerController');
+Route::resource('/kategori', 'KategoriController');
+Route::resource('/mobil', 'MobilController');
+Route::resource('/booking', 'BookingController');
+Route::resource('/pembayaran', 'PembayaranController');
 Auth::routes();
