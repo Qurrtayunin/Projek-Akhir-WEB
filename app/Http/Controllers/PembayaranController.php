@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Pembayaran;
 
 class PembayaranController extends Controller
 {
@@ -13,7 +14,8 @@ class PembayaranController extends Controller
      */
     public function index()
     {
-        return view('pembayaran');
+        $data = Pembayaran::all();
+        return view('pembayaran')->with('pembayaran', $data);
     }
 
     /**
@@ -23,7 +25,7 @@ class PembayaranController extends Controller
      */
     public function create()
     {
-        //
+        return view('pembayaran_tambah');
     }
 
     /**
@@ -34,7 +36,17 @@ class PembayaranController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'id_booking'=>'required',
+            'total'=>'required',
+            'status'=>'required',
+            'denda'=>'required',
+        ]);
+        $pembayaran = new Pembayaran([
+            'id_booking' => $request->input('id_booking')
+        ]);
+        $pembayaran->save();
+        return redirect('pembayaran');
     }
 
     /**
@@ -56,7 +68,8 @@ class PembayaranController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Pembayaran::where('id_pembayaran', '=',$id)->firstOrFail();
+       return view('pembayaran_edit')->with('pembayaran', $data);
     }
 
     /**
@@ -79,6 +92,7 @@ class PembayaranController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Pembayaran::where('id_pembayaran',$id)->delete();
+        return redirect('pembayaran');
     }
 }
