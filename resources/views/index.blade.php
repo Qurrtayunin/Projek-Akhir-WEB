@@ -28,7 +28,8 @@
       <div class="sidebar-heading">RENTAL MOBIL </div>
       <br>
       <div class="list-group list-group-flush">
-        <a href="{{route('customer')}}" class="list-group-item list-group-item-action bg-light">Customer</a>
+        <a href="{{route('dashboard.index')}}" class="list-group-item list-group-item-action bg-light">Dashboard</a>
+        <a href="{{route('customer.index')}}" class="list-group-item list-group-item-action bg-light">Customer</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">Booking</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">Kategori</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">Mobil</a>
@@ -71,8 +72,7 @@
       </nav>
 
       <div class="container-fluid">
-        <h1 class="mt-4">Rental Mobil</h1>
-        <p>Disini kami menyediakan layanan rental mobil / sewa mobil di Jogja yang berdiri sejak tahun 2007. Berpengalaman dalam menyediakan mobil berkualitas dengan tarif rental murah dan terjangkau. Kami siap melayani aneka kebutuhan transportasi anda seperti sewa mobil untuk wisata, keluar kota, wisuda mahasiswa, pindahan, pernikahan (wedding), mudik lebaran, event, perusahaan dan berbagai keperluan yang anda butuhkan. </p>
+        @yield('customer')
       </div>
 
     </div>
