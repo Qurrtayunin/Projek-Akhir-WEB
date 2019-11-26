@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Kategori;
 
 class KategoriController extends Controller
 {
@@ -13,7 +14,8 @@ class KategoriController extends Controller
      */
     public function index()
     {
-        return view('kategori');
+        $data = Kategori::all();
+        return view('kategori')->with('kategori', $data);
     }
 
     /**
@@ -23,7 +25,7 @@ class KategoriController extends Controller
      */
     public function create()
     {
-        //
+        return view('kategori_tambah');
     }
 
     /**
@@ -34,7 +36,18 @@ class KategoriController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nama_kategori'=>'required',
+            'biaya_harian'=>'required',
+            'denda_perjam'=>'required'
+        ]);
+        $kategori = new Kategori([
+            'nama_kategori' => $request->input('nama_kategori'),
+            'biaya_harian' => $request->input('biaya_harian'),
+            'denda_perjam' => $request->input('denda_perjam')
+        ]);
+        $kategori->save();
+        return redirect('kategori');
     }
 
     /**
@@ -56,7 +69,8 @@ class KategoriController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Kategori::where('nama_kategori', '=', $id)->firstOrFail();
+        return view('kategori_edit')->with('kategori', $data);
     }
 
     /**
@@ -68,7 +82,14 @@ class KategoriController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate(['nama_kategori'=>'required',
+        'biaya_harian'=>'required','denda_perjam'=>'required']);
+        $data = ['nama_kategori'=> $request->input('nama_kategori'),
+        'biaya_harian'=> $request->input('biaya_harian'),
+        'denda_perjam'=> $request->input('denda_perjam')];
+
+        Kategori::where('nama_kategori', $id)->update($data);
+        return redirect('kategori');
     }
 
     /**
@@ -79,6 +100,7 @@ class KategoriController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Kategori::where('nama_kategori', $id)->delete();
+        return redirect('kategori');
     }
 }

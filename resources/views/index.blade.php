@@ -53,7 +53,7 @@
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="nav-item active  ">
+          <li class="nav-item @yield('dashboard')">
             <a class="nav-link" href="{{route('dashboard.index')}}">
               <i class="material-icons">dashboard</i>
               <p>Dashboard</p>
@@ -77,7 +77,7 @@
               <p>Pembayaran</p>
             </a>
           </li>
-          <li class="nav-item ">
+          <li class="nav-item @yield('kategori')">
             <a class="nav-link" href="{{route('kategori.index')}}">
               <i class="material-icons">bubble_chart</i>
               <p>Kategori</p>
