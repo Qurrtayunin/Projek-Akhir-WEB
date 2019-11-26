@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Customer;
 
 class CustomerController extends Controller
 {
@@ -13,7 +14,8 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        return view('customer');
+        $data = Customer::all();
+        return view('customer')->with('customer', $data);
     }
 
     /**
@@ -43,7 +45,7 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id_customer)
     {
         //
     }
@@ -54,9 +56,11 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id_customer)
     {
-        //
+        $data = Customer::where('id_customer','=',
+        $id_customer)->firstOrFail();
+        return view('customer_edit')->with('customer', $data);
     }
 
     /**
@@ -66,9 +70,18 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id_customer)
     {
-        //
+        $request->validate([
+            'nama'=>'required', 'no_hp', 'alamat'
+        ]);
+        
+        $data =[
+            'nama'=>$request->nama,  'no_hp'=>$request->no_hp, 'alamat'=>$request->alamat
+        ];
+
+        Customer::where('id_customer', $id_customer)->update($data);
+        return redirect('customer');
     }
 
     /**
@@ -77,8 +90,9 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id_customer)
     {
-        //
+        Customer::where('id_customer', $id_customer)->delete();
+        return redirect('customer');
     }
 }

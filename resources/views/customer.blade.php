@@ -5,6 +5,7 @@
         <div class="container-fluid">
           <div class="navbar-wrapper">
             <a class="navbar-brand" href="javascript:void(0)">Customer</a>
+            <a href="{{route('customer.create')}}" button type="button" class="btn btn-primary"> Tambah </a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation" data-target="#navigation-example">
             <span class="sr-only">Toggle navigation</span>
@@ -72,6 +73,7 @@
                       <th>ID_Customer</th>
                       <th>nama</th>
                       <th>No. HP</th>
+                      <th>Alamat</th>
                       <th>Action</th>
                     </thead>
                     <tbody>
@@ -84,12 +86,16 @@
                           {{$value->nama}}
                         </td>
                         <td>
+                          {{$value->no_hp}}
+                        </td>
+                        <td>
+                          {{$value->alamat}}
+                        </td>
+                        <td>
                           <div class="btn-group">
                             <a href="{{route('customer.edit', $value->id_customer)}}"
                                 class="btn btn-success"><i class="fas fa-edit"></i></a>
                           </div> 
-                        </td>
-                        <td>
                           <form action="{{route('customer.destroy', $value->id_customer)}}" method="post">
                             @csrf
                             @method('DELETE')
