@@ -25,7 +25,7 @@
     <!-- Sidebar -->
     <div class="bg-light border-right" id="sidebar-wrapper">
       <br>
-      <div class="sidebar-heading">RENTAL MOBIL </div>
+      <div class="sidebar-heading"><b>RENTAL MOBIL</b> </div>
       <br>
       <div class="list-group list-group-flush">
         <a href="{{route('dashboard.index')}}" class="list-group-item list-group-item-action bg-light">Dashboard</a>
@@ -48,7 +48,7 @@
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+       <!--  <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <li class="nav-item active">
               <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
@@ -68,11 +68,12 @@
               </div>
             </li>
           </ul>
-        </div>
+        </div> -->
       </nav>
 
       <div class="container-fluid">
         @yield('customer')
+        @yield('dashboard')
       </div>
 
     </div>

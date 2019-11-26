@@ -22,4 +22,6 @@ Route::resource('/kategori', 'KategoriController');
 Route::resource('/mobil', 'MobilController');
 Route::resource('/booking', 'BookingController');
 Route::resource('/pembayaran', 'PembayaranController');
+
+Route::resource('/dashboard', 'DashboardController');
 Auth::routes();

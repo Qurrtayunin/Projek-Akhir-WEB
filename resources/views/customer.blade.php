@@ -11,9 +11,24 @@
   </thead>
   <tbody>
     <tr>
-      <th scope="row"></th>
-      
+      <th scope="row">1</th>
+      <th>Qurrota A'yunin</th>
+      <th>08888888888</th>
+      <th>Kartonyono</th>
     </tr>
+    <tr>
+      <th scope="row">1</th>
+      <th>Qurrota A'yunin</th>
+      <th>08888888888</th>
+      <th>Kartonyono</th>
+    </tr>
+    <tr>
+      <th scope="row">1</th>
+      <th>Qurrota A'yunin</th>
+      <th>08888888888</th>
+      <th>Kartonyono</th>
+    </tr>
+
   </tbody>
 </table>
 
