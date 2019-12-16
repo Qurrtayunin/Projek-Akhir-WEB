@@ -89,13 +89,13 @@
                         <td>{{$value->status}}</td>
                         <td>{{$value->denda}}</td>
                         <td><a href="{{route('pembayaran.edit', $value->id_pembayaran)}}"
-                      class="btn btn-success btn-sm">edit</a>
-                      <form action="{{route('pembayaran.destroy', $value->id_pembayaran)}}" method="POST"></form>
-                      @csrf
-                      @method('DELETE')
-                      <button class="btn btn-danger btn-sm"
-                      type="submit">delete</button>
-                    </td>
+                      		class="btn btn-success btn-sm">edit</a>
+                      		<form action="{{route('pembayaran.destroy', $value->id_pembayaran)}}" method="POST"></form>
+                      		@csrf
+                      		@method('DELETE')
+                      		<button class="btn btn-danger btn-sm"
+                      		type="submit">delete</button>
+                    	</td>
 
                       </tr>
                       @endforeach

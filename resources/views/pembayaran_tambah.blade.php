@@ -11,12 +11,19 @@
 
     <form action="{{route('pembayaran.store')}}" method="POST">
       @csrf
+      @method('POST')
   <div class="form-group">
     <label>Tambah Pembayaran</label>
-    <input type="text" class="form-control" placeholder="Id Booking">
-    <input type="text" class="form-control" placeholder="Total">
-    <input type="text" class="form-control" placeholder="Status">
-    <input type="text" class="form-control" placeholder="Denda">
+    <input name="id_booking" type="text" class="form-control" placeholder="Id Booking">
+  </div>
+  <div class="form-group">
+    <input name="total" type="text" class="form-control" placeholder="Total">
+  </div>
+  <div class="form-group">
+    <input name="status" type="text" class="form-control" placeholder="Status">
+  </div>
+  <div class="form-group">
+    <input name="denda" type="text" class="form-control" placeholder="Denda">
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>

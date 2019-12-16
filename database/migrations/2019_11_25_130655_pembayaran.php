@@ -15,9 +15,9 @@ class Pembayaran extends Migration
     {
         Schema::create('pembayaran', function (Blueprint $table) {
             $table->bigIncrements('id_pembayaran');
-            $table->bigInteger('id_booking')->unsigned();
+            $table->bigInteger('id_booking')->unsigned()->nullable();
             $table->integer('total');
-            $table->string('status');
+            $table->String('status');
             $table->integer('denda');
             $table->timestamps();
 

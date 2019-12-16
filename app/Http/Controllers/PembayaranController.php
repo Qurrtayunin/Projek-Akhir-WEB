@@ -42,9 +42,9 @@ class PembayaranController extends Controller
             'status'=>'required',
             'denda'=>'required',
         ]);
-        $pembayaran = new Pembayaran([
-            'id_booking' => $request->input('id_booking')
-        ]);
+        
+        $pembayaran=Pembayaran::create($request->all());
+    
         $pembayaran->save();
         return redirect('pembayaran');
     }
@@ -81,7 +81,18 @@ class PembayaranController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'id_booking'=>'required',
+            'total'=>'required',
+            'status'=>'required',
+            'denda'=>'required',
+        ]);
+        
+        $pembayaran=Pembayaran::create($request->all());
+            
+        $data = Pembayaran::where('id_pembayaran', '=',$id)->firstOrFail();
+        Pembayaran::where('id_pembayaran', $id)->update($data->toArray());
+        return redirect('pembayaran');
     }
 
     /**
@@ -90,7 +101,7 @@ class PembayaranController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id_pembayaran)
     {
         Pembayaran::where('id_pembayaran',$id)->delete();
         return redirect('pembayaran');
