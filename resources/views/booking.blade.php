@@ -66,7 +66,9 @@
             <div class="col-lg-12 col-md-12">
               <div class="card">
                 <div class="card-header card-header-primary">
-                  <h4 class="card-title">Data Booking</h4>
+                  <h4 class="card-title">Data Booking
+                  <a href="{{route('booking.create')}}" button type="button" class="btn btn-primary">Tambah</button> </a>
+                  </h4>
                   <p class="card-category">Tabel ini menunjukkan data booking yang dilakukan customer</p>
                 </div>
                 <div class="card-body table-responsive">
@@ -81,18 +83,28 @@
                       <th>Action</th>
                     </thead>
                     <tbody>
+                    @foreach($booking as $value)
                       <tr>
-                        <td>1</td>
-                        <td>Dakota Rice</td>
-                        <td>$36,738</td>
-                        <td>Niger</td>
-                        <td>Niger</td>
-                        <td>Niger</td>
-                        <td>Niger</td>
-                        <td>Niger</td>
+                        <td>{{$value->id_booking}}</td>
+                        <td>{{$value->id_customer}}</td>
+                        <td>{{$value->id_mobil}}</td>
+                        <td>{{$value->tanggal_pinjam}}</td>
+                        <td>{{$value->jadwal_kembali}}</td>
+                        <td>{{$value->tanggal_dikembalikan}}</td>
+                        <td>
+                          <div class="btn-group">
+                            <a href="{{route('booking.edit', $value->id_booking)}}" class="btn btn-success">
+                            <i class="fas fa-edit"></i></a>
+                          </div>                        
+                            <form action="{{route('booking.destroy', $value->id_booking)}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger btn-sm" type="submit"><i class="fas fa-trash"></i></button>
+                            </form>
+                        </td>
                       </tr>
-
                     </tbody>
+                    @endforeach
                   </table>
                 </div>
 
