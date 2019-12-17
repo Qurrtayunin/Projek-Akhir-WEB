@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Mobil;
 
 class MobilController extends Controller
 {
@@ -13,7 +14,8 @@ class MobilController extends Controller
      */
     public function index()
     {
-        return view('mobil');
+        $data = Mobil::all();
+        return view('mobil')->with('mobil', $data);
     }
 
     /**
@@ -23,7 +25,7 @@ class MobilController extends Controller
      */
     public function create()
     {
-        //
+        return view('mobil_tambah');
     }
 
     /**
@@ -34,7 +36,18 @@ class MobilController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nama_kategori'=>'required',
+            'nama_mobil'=>'required',
+            'tahun_produksi'=>'required',
+            'no_plat'=>'required',
+            'warna'=>'required',
+        ]);
+        
+        $mobil=Mobil::create($request->all());
+    
+        $mobil->save();
+        return redirect('mobil');
     }
 
     /**
@@ -56,7 +69,8 @@ class MobilController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Mobil::where('id_mobil', '=',$id)->firstOrFail();
+       return view('mobil_edit')->with('mobil', $data);
     }
 
     /**
@@ -68,7 +82,19 @@ class MobilController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nama_kategori'=>'required',
+            'nama_mobil'=>'required',
+            'tahun_produksi'=>'required',
+            'no_plat'=>'required',
+            'warna'=>'required',
+        ]);
+        
+        $mobil=Mobil::create($request->all());
+    
+        $data = Mobil::where('id_mobil', '=',$id)->firstOrFail();
+        Mobil::where('id_mobil', $id)->update($data->toArray());
+        return redirect('mobil');
     }
 
     /**
@@ -79,6 +105,7 @@ class MobilController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Mobil::where('id_mobil',$id)->delete();
+        return redirect('mobil');
     }
 }

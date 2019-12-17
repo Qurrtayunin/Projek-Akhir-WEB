@@ -101,7 +101,7 @@ class PembayaranController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id_pembayaran)
+    public function destroy($id)
     {
         Pembayaran::where('id_pembayaran',$id)->delete();
         return redirect('pembayaran');

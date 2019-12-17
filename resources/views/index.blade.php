@@ -84,7 +84,7 @@
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./map.html">
+            <a class="nav-link" href="{{route('mobil.index')}}">
               <i class="material-icons">bubble_chart</i>
               <p>Mobil</p>
             </a>
